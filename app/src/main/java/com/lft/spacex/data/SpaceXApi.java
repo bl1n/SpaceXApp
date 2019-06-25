@@ -2,6 +2,8 @@ package com.lft.spacex.data;
 
 import com.lft.spacex.model.Company;
 import com.lft.spacex.model.HistoryEvent;
+import com.lft.spacex.model.Launch;
+import com.lft.spacex.model.LaunchesResponse;
 import com.lft.spacex.model.SpaceXHistoryResponse;
 
 import io.reactivex.Single;
@@ -18,4 +20,7 @@ public interface SpaceXApi {
 
     @GET("info")
     Single<Company> getCompanyInfo();
+
+    @GET("launches/latest")
+    Single<LaunchesResponse> getLaunches();
 }
