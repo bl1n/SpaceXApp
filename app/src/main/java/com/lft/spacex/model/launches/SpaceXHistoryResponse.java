@@ -1,8 +1,8 @@
-package com.lft.spacex.model;
+package com.lft.spacex.model.launches;
 
 import com.google.gson.annotations.SerializedName;
 
-public class HistoryEvent {
+public class SpaceXHistoryResponse {
 
     /**
      * id : 1
@@ -93,24 +93,34 @@ public class HistoryEvent {
          */
 
         @SerializedName("reddit")
-        private String mReddit;
+        private Object mReddit;
         @SerializedName("article")
         private String mArticle;
         @SerializedName("wikipedia")
         private String mWikipedia;
 
-        public String getReddit() {
+        public Object getReddit() {
             return mReddit;
+        }
+
+        public void setReddit(Object reddit) {
+            mReddit = reddit;
         }
 
         public String getArticle() {
             return mArticle;
         }
 
+        public void setArticle(String article) {
+            mArticle = article;
+        }
 
         public String getWikipedia() {
             return mWikipedia;
         }
 
+        public void setWikipedia(String wikipedia) {
+            mWikipedia = wikipedia;
+        }
     }
 }

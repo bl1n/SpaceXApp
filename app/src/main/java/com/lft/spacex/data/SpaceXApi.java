@@ -1,10 +1,9 @@
 package com.lft.spacex.data;
 
-import com.lft.spacex.model.Company;
-import com.lft.spacex.model.HistoryEvent;
-import com.lft.spacex.model.Launch;
-import com.lft.spacex.model.LaunchesResponse;
-import com.lft.spacex.model.SpaceXHistoryResponse;
+import com.lft.spacex.model.histories.Company;
+import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.model.launches.LaunchesResponse;
+import com.lft.spacex.model.launches.SpaceXHistoryResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

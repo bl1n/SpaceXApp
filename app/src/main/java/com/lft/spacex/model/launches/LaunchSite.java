@@ -1,5 +1,5 @@
 
-package com.lft.spacex.model;
+package com.lft.spacex.model.launches;
 
 import com.google.gson.annotations.SerializedName;
 
