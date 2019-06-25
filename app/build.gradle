@@ -10,7 +10,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-//        buildConfigField "String", "API_URL", '"https://api.spacexdata.com/v3"'
+        buildConfigField "String", "API_URL", '"https://api.spacexdata.com/v3"'
 
     }
 
