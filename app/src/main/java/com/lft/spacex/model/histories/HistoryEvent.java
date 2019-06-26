@@ -33,57 +33,36 @@ public class HistoryEvent {
         return mId;
     }
 
-    public void setId(int id) {
-        mId = id;
-    }
 
     public String getTitle() {
         return mTitle;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
-    }
 
     public String getEventDateUtc() {
         return mEventDateUtc;
     }
 
-    public void setEventDateUtc(String eventDateUtc) {
-        mEventDateUtc = eventDateUtc;
-    }
 
     public int getEventDateUnix() {
         return mEventDateUnix;
     }
 
-    public void setEventDateUnix(int eventDateUnix) {
-        mEventDateUnix = eventDateUnix;
-    }
 
     public int getFlightNumber() {
         return mFlightNumber;
     }
 
-    public void setFlightNumber(int flightNumber) {
-        mFlightNumber = flightNumber;
-    }
 
     public String getDetails() {
         return mDetails;
     }
 
-    public void setDetails(String details) {
-        mDetails = details;
-    }
 
     public LinksBean getLinks() {
         return mLinks;
     }
 
-    public void setLinks(LinksBean links) {
-        mLinks = links;
-    }
 
     public static class LinksBean {
         /**
@@ -112,5 +91,18 @@ public class HistoryEvent {
             return mWikipedia;
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "HistoryEvent{" +
+                "mId=" + mId +
+                ", mTitle='" + mTitle + '\'' +
+                ", mEventDateUtc='" + mEventDateUtc + '\'' +
+                ", mEventDateUnix=" + mEventDateUnix +
+                ", mFlightNumber=" + mFlightNumber +
+                ", mDetails='" + mDetails + '\'' +
+                ", mLinks=" + mLinks +
+                '}';
     }
 }
