@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_all_text"
+        android:id="@+id/tv_event_tittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_event_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_event_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_event_reddit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_event_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_event_wiki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,14 +1,12 @@
-package com.lft.spacex.ui.events;
+package com.lft.spacex.ui.launches;
 
 import android.support.v4.app.Fragment;
 
 import com.lft.spacex.common.SingleFragmentActivity;
 
-public class EventsActivity extends SingleFragmentActivity {
-
-
+public class LaunchesActivity extends SingleFragmentActivity {
     @Override
     protected Fragment getFragment() {
-        return EventsFragment.newInstance();
+        return LaunchesFragment.newInstance();
     }
 }

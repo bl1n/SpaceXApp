@@ -1,4 +1,4 @@
-package com.lft.spacex.ui.events;
+package com.lft.spacex.ui.history;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

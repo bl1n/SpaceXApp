@@ -1,4 +1,4 @@
-package com.lft.spacex.ui.events;
+package com.lft.spacex.ui.history;
 
 import com.lft.spacex.common.BaseView;
 import com.lft.spacex.model.histories.HistoryEvent;
