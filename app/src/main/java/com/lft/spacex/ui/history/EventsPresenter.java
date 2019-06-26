@@ -1,11 +1,9 @@
-package com.lft.spacex.ui.events;
+package com.lft.spacex.ui.history;
 
 import android.util.Log;
 
 import com.lft.spacex.common.BasePresenter;
 import com.lft.spacex.data.SpaceXApi;
-import com.lft.spacex.model.histories.HistoryEvent;
-import com.lft.spacex.model.histories.SpaceXHistoryResponse;
 
 import java.util.ArrayList;
 

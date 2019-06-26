@@ -2,8 +2,8 @@ package com.lft.spacex.data;
 
 import com.lft.spacex.model.histories.Company;
 import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.model.launches.Launch;
 import com.lft.spacex.model.launches.LaunchesResponse;
-import com.lft.spacex.model.histories.SpaceXHistoryResponse;
 
 import java.util.List;
 
@@ -22,6 +22,10 @@ public interface SpaceXApi {
     @GET("info")
     Single<Company> getCompanyInfo();
 
-    @GET("launches/latest")
-    Single<LaunchesResponse> getLaunches();
+    @GET("launches")
+    Single<List<Launch>> getLaunches();
+
+
+    @GET("launches/{flight_number}")
+    Single<LaunchesResponse> getLaunch(@Path("id") long flightNumber);
 }

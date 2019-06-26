@@ -1,13 +1,19 @@
 package com.lft.spacex.common;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.lft.spacex.R;
+import com.lft.spacex.ui.history.EventsActivity;
+import com.lft.spacex.ui.launches.LaunchesActivity;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity
         implements SwipeRefreshLayout.OnRefreshListener, RefreshOwner {
@@ -54,5 +60,37 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
     @Override
     public void setRefreshState(boolean refreshing) {
         mSwipeRefreshLayout.post(() -> mSwipeRefreshLayout.setRefreshing(refreshing));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.history:
+                openEventsActivity();
+                break;
+            case R.id.launches:
+                openLunchesActivity();
+                break;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openLunchesActivity() {
+        startActivity(new Intent(this, LaunchesActivity.class));
+    }
+
+    protected  void openEventsActivity(){
+        startActivity(new Intent(this, EventsActivity.class));
     }
 }
