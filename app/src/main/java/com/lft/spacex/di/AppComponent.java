@@ -1,5 +1,7 @@
 package com.lft.spacex.di;
 
+import com.lft.spacex.ui.companyInfo.CompanyInfoFragment;
+import com.lft.spacex.ui.companyInfo.CompanyInfoPresenter;
 import com.lft.spacex.ui.history.EventsFragment;
 import com.lft.spacex.ui.history.EventsPresenter;
 import com.lft.spacex.ui.launches.LaunchesFragment;
@@ -16,5 +18,7 @@ public interface AppComponent {
     void inject(LaunchesPresenter injector);
     void inject(EventsFragment injector);
     void inject(LaunchesFragment injector);
+    void inject(CompanyInfoFragment injector);
+    void inject(CompanyInfoPresenter injector);
 
 }

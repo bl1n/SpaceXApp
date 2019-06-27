@@ -1,44 +1,37 @@
-package com.lft.spacex.ui.launches;
+package com.lft.spacex.ui.companyInfo;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.lft.spacex.AppDelegate;
 import com.lft.spacex.R;
 import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
-import com.lft.spacex.model.launches.Launch;
-
-import java.util.List;
+import com.lft.spacex.model.CompanyInfo;
 
 import javax.inject.Inject;
 
-public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
-        implements Refreshable, LaunchesView, LaunchesAdapter.OnItemClickListener {
+public class CompanyInfoFragment extends PresenterFragment<CompanyInfoPresenter>
+        implements Refreshable, CompanyInfoView {
 
-    private RecyclerView mRecyclerView;
     private RefreshOwner mRefreshOwner;
     private View mErrorView;
-    private LaunchesAdapter mAdapter;
+    private LinearLayout mLinearLayout;
+    private TextView mCITittle;
+
     @Inject
-    LaunchesPresenter mPresenter;
+    CompanyInfoPresenter mPresenter;
 
-    public static LaunchesFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        LaunchesFragment fragment = new LaunchesFragment();
-        fragment.setArguments(args);
-        return fragment;
+    public static CompanyInfoFragment newInstance() {
+        return new CompanyInfoFragment();
     }
 
     @Override
@@ -52,15 +45,15 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fr_list, container, false);
+        return inflater.inflate(R.layout.fr_company_info, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mRecyclerView = view.findViewById(R.id.recycler);
         mErrorView = view.findViewById(R.id.errorView);
+        mLinearLayout = view.findViewById(R.id.ci_group);
+        mCITittle = view.findViewById(R.id.ci_tittle);
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -69,15 +62,11 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
         }
         AppDelegate.getAppComponent().inject(this);
         mPresenter.setView(this);
-        mAdapter = new LaunchesAdapter(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter);
         onRefreshData();
     }
-
     @Override
     public void onRefreshData() {
-        mPresenter.getLaunches();
+        mPresenter.getCompanyInfo();
     }
 
     @Override
@@ -93,30 +82,16 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     @Override
     public void showError() {
         mErrorView.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.GONE);
+        mLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
-    public void showLaunches(@NonNull List<Launch> launches) {
-        mErrorView.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-        mAdapter.addData(launches, true);
-    }
-
-    @Override
-    public void openLaunch(@NonNull long id) {
-        Log.d("Debug", "openLaunch: id = " + id);
-
-    }
-
-    @Override
-    public void onItemClick(long id) {
-        mPresenter.openLaunch(id);
-    }
-
-
-    @Override
-    protected LaunchesPresenter getPresenter() {
+    protected CompanyInfoPresenter getPresenter() {
         return mPresenter;
+    }
+
+    @Override
+    public void showCompanyInfo(CompanyInfo companyInfo) {
+        mCITittle.setText(companyInfo.getCeo());
     }
 }

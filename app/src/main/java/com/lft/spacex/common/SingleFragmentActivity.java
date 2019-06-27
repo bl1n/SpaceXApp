@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.lft.spacex.R;
+import com.lft.spacex.ui.companyInfo.CompanyInfoActivity;
 import com.lft.spacex.ui.history.EventsActivity;
 import com.lft.spacex.ui.launches.LaunchesActivity;
 
@@ -32,7 +33,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
     }
 
-    protected  void changeFragment(Fragment fragment){
+    protected void changeFragment(Fragment fragment) {
         boolean addToBackStack = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer) != null;
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
@@ -71,26 +72,33 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.history:
                 openEventsActivity();
                 break;
             case R.id.launches:
                 openLunchesActivity();
                 break;
-                default:
-                    return super.onOptionsItemSelected(item);
+            case R.id.companyInfo:
+                openCompanyInfoActivity();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
 
         return super.onOptionsItemSelected(item);
     }
 
+    private   void openCompanyInfoActivity(){
+        startActivity(new Intent(this, CompanyInfoActivity.class));
+    }
+
     private void openLunchesActivity() {
         startActivity(new Intent(this, LaunchesActivity.class));
     }
 
-    protected  void openEventsActivity(){
+    protected void openEventsActivity() {
         startActivity(new Intent(this, EventsActivity.class));
     }
 }

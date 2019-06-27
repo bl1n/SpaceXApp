@@ -1,8 +1,8 @@
-package com.lft.spacex.model.histories;
+package com.lft.spacex.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Company {
+public class CompanyInfo {
 
     /**
      * name : SpaceX
@@ -203,7 +203,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" +
+        return "CompanyInfo{" +
                 "mName='" + mName + '\'' +
                 ", mFounder='" + mFounder + '\'' +
                 ", mFounded=" + mFounded +
