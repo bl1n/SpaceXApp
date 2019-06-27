@@ -563,7 +563,7 @@ public class Launch {
                     return mPayloadMassKg;
                 }
 
-                public void setPayloadMassKg(double payloadMassKg) {
+                public void setPayloadMassKg(int payloadMassKg) {
                     mPayloadMassKg = payloadMassKg;
                 }
 

@@ -8,4 +8,5 @@ public abstract class BasePresenter {
     public void disposeAll() {
         mCompositeDisposable.dispose();
     }
+
 }

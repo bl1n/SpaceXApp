@@ -4,5 +4,8 @@
     <string name="launches">launches</string>
     <string name="history">History</string>
     <string name="company_info">Company Info</string>
+    <string name="launches_btn">Launches</string>
+    <string name="history_btn">History</string>
+    <string name="ci_btn">Compamy Info</string>
 
 </resources>

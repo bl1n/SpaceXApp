@@ -49,6 +49,6 @@ public class LaunchesAdapter extends RecyclerView.Adapter<LaunchesHolder> {
     }
 
     public interface OnItemClickListener{
-        void onItemClick(long id);
+        void onItemClick(int id);
     }
 }

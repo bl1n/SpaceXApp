@@ -1,6 +1,7 @@
 package com.lft.spacex.ui.history;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,8 @@ import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
 import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.ui.history.event.EventActivity;
+import com.lft.spacex.ui.history.event.EventFragment;
 
 import java.util.List;
 
@@ -119,13 +122,17 @@ public class EventsFragment extends PresenterFragment<EventsPresenter>
     }
 
     @Override
-    public void openEvent(int id) {
-
-        Log.d("Debug", "openEvent: id = " + id);
+    public void onItemClick(int id) {
+        mPresenter.openHistoryEvent(id);
     }
 
     @Override
-    public void onItemClick(int id) {
-        mPresenter.openEvent(id);
+    public void openHistoryEvent(int id) {
+        Log.d("Debug", "openHistoryEvent: id = " + id);
+        Intent intent = new Intent(getActivity(), EventActivity.class);
+        Bundle args = new Bundle();
+        args.putInt(EventFragment.EVENT_ID, id);
+        intent.putExtra(EventFragment.ARGS, args);
+        startActivity(intent);
     }
 }
