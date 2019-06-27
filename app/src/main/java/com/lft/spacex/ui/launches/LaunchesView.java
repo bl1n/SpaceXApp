@@ -9,5 +9,5 @@ import java.util.List;
 
 interface LaunchesView extends BaseView {
     void showLaunches(@NonNull List<Launch> launches);
-    void openLaunch(@NonNull long id);
+    void openLaunch(@NonNull int id);
 }

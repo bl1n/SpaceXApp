@@ -1,56 +1,50 @@
-package com.lft.spacex.ui.history;
+package com.lft.spacex.ui.launches.launch;
 
 import android.util.Log;
 
 import com.lft.spacex.common.BasePresenter;
 import com.lft.spacex.data.SpaceXApi;
-
-import java.util.ArrayList;
+import com.lft.spacex.model.launches.Launch;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class EventsPresenter extends BasePresenter {
-
+public class LaunchPresenter extends BasePresenter {
 
     public static final String TAG = "Debug";
-    private EventsView mView;
+
     @Inject
     SpaceXApi mApi;
 
     @Inject
-    public EventsPresenter() {
+    public LaunchPresenter() {
     }
 
-    public void setView(EventsView view) {
-        mView = view;
-    }
+    private LaunchView mView;
 
-    public void getHistoryEvents() {
 
+
+    public void getLaunch(int flightNumber) {
+        Log.d(TAG, "getLaunch: " + flightNumber);
         mCompositeDisposable.add(
-                mApi.getHistoryEvents()
+                mApi.getLaunch(flightNumber)
                         .subscribeOn(Schedulers.io())
                         .onErrorReturn(throwable -> {
-                            Log.d(TAG, "getHistoryEvents: error " + throwable.getMessage());
-
-                            return new ArrayList<>();
+                            Log.d(TAG, "getLaunch: onError " + throwable.toString());
+                            return new Launch();
                         })
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(disposable -> mView.showRefresh())
                         .doFinally(mView::hideRefresh)
                         .subscribe(
-                                response -> mView.showHistories(response)
-                                )
-
-
-
+                                launch -> mView.showLaunch(launch),
+                                throwable -> Log.d(TAG, "getLaunch: subscribe error" + throwable.getMessage()))
         );
     }
 
-    public void openHistoryEvent(int id){
-        mView.openHistoryEvent(id);
+    public void setView(LaunchView view) {
+        mView = view;
     }
 }

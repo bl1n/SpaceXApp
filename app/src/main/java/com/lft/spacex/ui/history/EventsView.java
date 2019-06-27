@@ -11,5 +11,5 @@ public interface EventsView extends BaseView {
 
     void showHistories(@NonNull List<HistoryEvent> events);
 
-    void openEvent(@NonNull int id);
+    void openHistoryEvent(@NonNull int id);
 }

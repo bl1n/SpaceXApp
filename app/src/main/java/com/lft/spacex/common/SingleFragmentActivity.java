@@ -63,7 +63,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
         mSwipeRefreshLayout.post(() -> mSwipeRefreshLayout.setRefreshing(refreshing));
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -100,5 +100,5 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
     protected void openEventsActivity() {
         startActivity(new Intent(this, EventsActivity.class));
-    }
+    }*/
 }

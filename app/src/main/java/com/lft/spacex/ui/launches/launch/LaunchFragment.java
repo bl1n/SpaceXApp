@@ -1,16 +1,15 @@
-package com.lft.spacex.ui.launches;
+package com.lft.spacex.ui.launches.launch;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.lft.spacex.AppDelegate;
 import com.lft.spacex.R;
@@ -18,33 +17,28 @@ import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
 import com.lft.spacex.model.launches.Launch;
-import com.lft.spacex.ui.launches.launch.LaunchActivity;
-import com.lft.spacex.ui.launches.launch.LaunchFragment;
-
-import java.util.List;
+import com.lft.spacex.ui.history.event.EventFragment;
+import com.lft.spacex.ui.history.event.EventPresenter;
 
 import javax.inject.Inject;
 
-public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
-        implements Refreshable, LaunchesView, LaunchesAdapter.OnItemClickListener {
+public class LaunchFragment extends PresenterFragment<LaunchPresenter>
+        implements Refreshable, LaunchView {
 
-    private RecyclerView mRecyclerView;
+    public static final String FLIGHT_NUMBER = "FLIGHT_NUMBER";
+    public static final String ARGS = "ARGS";
     private RefreshOwner mRefreshOwner;
     private View mErrorView;
-    private LaunchesAdapter mAdapter;
+    private LinearLayout mLinearLayout;
+    private int mFlightNumber;
+    private TextView mLFlightDetails;
+
+
     @Inject
-    LaunchesPresenter mPresenter;
+    LaunchPresenter mPresenter;
 
-    @Override
-    protected LaunchesPresenter getPresenter() {
-        return mPresenter;
-    }
-
-    public static LaunchesFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        LaunchesFragment fragment = new LaunchesFragment();
+    public static LaunchFragment newInstance(Bundle args) {
+        LaunchFragment fragment = new LaunchFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,32 +54,36 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fr_list, container, false);
+        return inflater.inflate(R.layout.fr_launch_details, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mRecyclerView = view.findViewById(R.id.recycler);
         mErrorView = view.findViewById(R.id.errorView);
-    }
+        mLinearLayout = view.findViewById(R.id.ld_group);
+        mLFlightDetails = view.findViewById(R.id.tv_ld_details);
 
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
             getActivity().setTitle("Launches");
         }
+        if(getArguments() !=null){
+            mFlightNumber = getArguments().getInt(FLIGHT_NUMBER);
+            Log.d(LaunchPresenter.TAG, "onActivityCreated: " + mFlightNumber);
+        }
         AppDelegate.getAppComponent().inject(this);
         mPresenter.setView(this);
-        mAdapter = new LaunchesAdapter(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter);
         onRefreshData();
     }
 
+
+
     @Override
     public void onRefreshData() {
-        mPresenter.getLaunches();
+        mPresenter.getLaunch(mFlightNumber);
     }
 
     @Override
@@ -101,30 +99,17 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     @Override
     public void showError() {
         mErrorView.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.GONE);
+        mLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
-    public void showLaunches(@NonNull List<Launch> launches) {
-        mErrorView.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-        mAdapter.addData(launches, true);
+    protected LaunchPresenter getPresenter() {
+        return mPresenter;
     }
 
     @Override
-    public void openLaunch(@NonNull int id) {
-        Log.d("Debug", "openLaunch: id = " + id);
-        Intent intent = new Intent(getActivity(), LaunchActivity.class);
-        Bundle args = new Bundle();
-        args.putInt(LaunchFragment.FLIGHT_NUMBER, id);
-        intent.putExtra(LaunchFragment.ARGS, args);
-        startActivity(intent);
-
+    public void showLaunch(Launch launch) {
+        getActivity().setTitle(launch.getMissionName());
+        mLFlightDetails.setText(launch.getDetails());
     }
-
-    @Override
-    public void onItemClick(int id) {
-        mPresenter.openLaunch(id);
-    }
-
 }

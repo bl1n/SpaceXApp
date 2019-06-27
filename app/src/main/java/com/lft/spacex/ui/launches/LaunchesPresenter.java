@@ -52,7 +52,7 @@ public class LaunchesPresenter extends BasePresenter {
         );
     }
 
-    public void openLaunch(long id){
+    public void openLaunch(int id){
         mView.openLaunch(id);
     }
 }

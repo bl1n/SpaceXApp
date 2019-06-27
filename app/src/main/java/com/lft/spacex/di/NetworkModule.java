@@ -41,6 +41,7 @@ public class NetworkModule {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.API_URL)
                 // need for interceptors
+
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
