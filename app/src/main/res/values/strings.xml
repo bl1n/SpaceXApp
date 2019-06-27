@@ -3,5 +3,6 @@
     <string name="error">Something went wrong. Try again.</string>
     <string name="launches">launches</string>
     <string name="history">History</string>
+    <string name="company_info">Company Info</string>
 
 </resources>

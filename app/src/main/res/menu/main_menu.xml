@@ -11,4 +11,8 @@
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/history"
         app:showAsAction="ifRoom" />
+    <item android:id="@+id/companyInfo"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="@string/company_info"
+        app:showAsAction="ifRoom"/>
 </menu>

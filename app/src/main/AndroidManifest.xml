@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.launches.LaunchesActivity"/>
+        <activity android:name=".ui.companyInfo.CompanyInfoActivity"/>
     </application>
 
 </manifest>
