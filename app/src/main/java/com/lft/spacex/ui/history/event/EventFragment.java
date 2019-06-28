@@ -16,6 +16,7 @@ import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
 import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.utils.DateUtils;
 
 import javax.inject.Inject;
 
@@ -23,10 +24,20 @@ public class EventFragment extends PresenterFragment<EventPresenter> implements 
 
     public static final String EVENT_ID = "EVENT_ID";
     public static final String ARGS = "ARGS";
+
     private RefreshOwner mRefreshOwner;
+
     private View mErrorView;
     private LinearLayout mLinearLayout;
+
     private TextView mEDTittle;
+    private TextView mDetails;
+    private TextView mReddit;
+    private TextView mSpaceXURL;
+    private TextView mWiki;
+    private TextView mDate;
+
+
     private int mEventId;
 
     @Inject
@@ -56,6 +67,13 @@ public class EventFragment extends PresenterFragment<EventPresenter> implements 
         mErrorView = view.findViewById(R.id.errorView);
         mLinearLayout = view.findViewById(R.id.ed_group);
         mEDTittle = view.findViewById(R.id.tv_ed_tittle);
+        mDetails = view.findViewById(R.id.tv_event_details);
+        mReddit = view.findViewById(R.id.tv_event_reddit);
+        mSpaceXURL = view.findViewById(R.id.tv_event_article);
+        mWiki = view.findViewById(R.id.tv_event_wiki);
+        mDate = view.findViewById(R.id.tv_event_date);
+
+
 
     }
     @Override
@@ -101,6 +119,11 @@ public class EventFragment extends PresenterFragment<EventPresenter> implements 
     @Override
     public void showEvent(HistoryEvent event) {
         getActivity().setTitle(event.getTitle());
+        mDate.setText(DateUtils.format(event.getEventDateUnix()));
         mEDTittle.setText(event.getTitle());
+        mDetails.setText(event.getDetails());
+        mReddit.setText(event.getLinks().getReddit());
+        mSpaceXURL.setText(event.getLinks().getArticle());
+        mWiki.setText(event.getLinks().getWikipedia());
     }
 }
