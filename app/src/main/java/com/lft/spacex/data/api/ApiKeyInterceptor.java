@@ -1,4 +1,4 @@
-package com.lft.spacex.data;
+package com.lft.spacex.data.api;
 
 import android.support.annotation.NonNull;
 

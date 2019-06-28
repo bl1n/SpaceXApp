@@ -3,14 +3,15 @@ package com.lft.spacex.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.lft.spacex.R;
-import com.lft.spacex.model.CompanyInfo;
 import com.lft.spacex.ui.companyInfo.CompanyInfoActivity;
 import com.lft.spacex.ui.history.EventsActivity;
 import com.lft.spacex.ui.launches.LaunchesActivity;
+
+// TODO: 28.06.2019 add RoomDatabase
+// TODO: 28.06.2019 add Moxy
 
 public class MainActivity extends AppCompatActivity {
     private Button mBtnLaunches;

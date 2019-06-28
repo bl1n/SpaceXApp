@@ -3,8 +3,8 @@ package com.lft.spacex.ui.companyInfo;
 import android.util.Log;
 
 import com.lft.spacex.common.BasePresenter;
-import com.lft.spacex.data.SpaceXApi;
-import com.lft.spacex.model.CompanyInfo;
+import com.lft.spacex.data.api.SpaceXApi;
+import com.lft.spacex.data.model.CompanyInfo;
 
 import javax.inject.Inject;
 

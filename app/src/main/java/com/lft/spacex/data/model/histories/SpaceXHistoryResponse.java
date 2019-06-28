@@ -1,4 +1,4 @@
-package com.lft.spacex.model.histories;
+package com.lft.spacex.data.model.histories;
 
 import com.google.gson.annotations.SerializedName;
 

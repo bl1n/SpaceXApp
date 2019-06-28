@@ -1,7 +1,7 @@
 package com.lft.spacex.ui.history;
 
 import com.lft.spacex.common.BaseView;
-import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.data.model.histories.HistoryEvent;
 
 import java.util.List;
 

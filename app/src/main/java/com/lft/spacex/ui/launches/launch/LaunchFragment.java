@@ -17,7 +17,7 @@ import com.lft.spacex.R;
 import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
-import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.data.model.launches.Launch;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

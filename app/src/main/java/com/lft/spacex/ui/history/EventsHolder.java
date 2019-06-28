@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lft.spacex.R;
-import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.data.model.histories.HistoryEvent;
 import com.lft.spacex.utils.DateUtils;
 
 public class EventsHolder extends RecyclerView.ViewHolder {
