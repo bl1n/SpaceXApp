@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.lft.spacex.R;
 import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.utils.DateUtils;
 
 class LaunchesHolder extends RecyclerView.ViewHolder {
 
@@ -18,8 +19,13 @@ class LaunchesHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Launch launch, LaunchesAdapter.OnItemClickListener onItemClickListener){
-        final String text =launch.getLaunchYear()  + " " + launch.getDetails();
+        final String text = DateUtils.format(launch.getLaunchDateUnix())  + " " + launch.getMissionName();
         mTvTittle.setText(text);
+
+        if(launch.isUpcoming()){
+            mTvTittle.setTextColor(mTvTittle.getContext().getResources().getColor(R.color.accent));
+        } else
+            mTvTittle.setTextColor(mTvTittle.getContext().getResources().getColor(R.color.colorAccent));
         if (onItemClickListener != null) {
             itemView.setOnClickListener(v -> onItemClickListener.onItemClick(
                     launch.getFlightNumber()
