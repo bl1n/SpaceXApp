@@ -114,6 +114,7 @@ public class LaunchFragment extends PresenterFragment<LaunchPresenter>
         getActivity().setTitle(launch.getMissionName());
         mLFlightDetails.setText(launch.getDetails());
         final List<String> flickrImages = launch.getLinks().getFlickrImages();
+        // TODO: 28.06.2019 add RecycleView or ListView for scrolling images
         for(String s:flickrImages){
             ImageView imageView = new ImageView(mLFlightDetails.getContext());
             imageView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
