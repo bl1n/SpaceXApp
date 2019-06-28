@@ -22,7 +22,7 @@ class LaunchesHolder extends RecyclerView.ViewHolder {
         final String text = DateUtils.format(launch.getLaunchDateUnix())  + " " + launch.getMissionName();
         mTvTittle.setText(text);
 
-        if(launch.isUpcoming()){
+        if(launch.isLaunchSuccess()){
             mTvTittle.setTextColor(mTvTittle.getContext().getResources().getColor(R.color.accent));
         } else
             mTvTittle.setTextColor(mTvTittle.getContext().getResources().getColor(R.color.colorAccent));
