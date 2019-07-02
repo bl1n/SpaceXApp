@@ -14,15 +14,15 @@ import io.reactivex.schedulers.Schedulers;
 public class LaunchPresenter extends BasePresenter {
 
     public static final String TAG = "Debug";
+    private LaunchView mView;
 
     @Inject
     SpaceXApi mApi;
 
+
     @Inject
     public LaunchPresenter() {
     }
-
-    private LaunchView mView;
 
 
 

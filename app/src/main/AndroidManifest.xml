@@ -25,6 +25,7 @@
         <activity android:name=".ui.history.EventsActivity" />
         <activity android:name=".ui.launches.LaunchesActivity" />
         <activity android:name=".ui.companyInfo.CompanyInfoActivity" />
+        <activity android:name=".ui.Images.ImagesActivity" />
     </application>
 
 </manifest>

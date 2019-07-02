@@ -115,13 +115,16 @@ public class LaunchFragment extends PresenterFragment<LaunchPresenter>
         mLFlightDetails.setText(launch.getDetails());
         final List<String> flickrImages = launch.getLinks().getFlickrImages();
         // TODO: 28.06.2019 add RecycleView or ListView for scrolling images
-        if(flickrImages.size()>1){
+
+
+        /*if(flickrImages.size()>1){
+            Log.d("Debug", "showLaunch: " + launch.getLinks().getFlickrImages().size());
             ImageView imageView = new ImageView(mLFlightDetails.getContext());
             imageView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             mLinearLayout.addView(imageView);
             Picasso.get().load(flickrImages.get(0)).into(imageView);
-        }
+        }*/
 
     }
 }

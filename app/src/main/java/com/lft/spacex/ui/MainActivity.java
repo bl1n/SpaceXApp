@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.lft.spacex.R;
+import com.lft.spacex.ui.Images.ImagesActivity;
 import com.lft.spacex.ui.companyInfo.CompanyInfoActivity;
 import com.lft.spacex.ui.history.EventsActivity;
 import com.lft.spacex.ui.launches.LaunchesActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtnLaunches;
     private Button mBtnHistory;
     private Button mBtnCompanyInfo;
+    private Button mBtnImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnHistory.setOnClickListener(v -> startActivity(new Intent(this, EventsActivity.class)));
         mBtnCompanyInfo = findViewById(R.id.start_btn_ci);
         mBtnCompanyInfo.setOnClickListener(v -> startActivity(new Intent(this, CompanyInfoActivity.class)));
+        mBtnImages = findViewById(R.id.start_btn_images);
+        mBtnImages.setOnClickListener(v -> startActivity(new Intent(this, ImagesActivity.class)));
     }
 }

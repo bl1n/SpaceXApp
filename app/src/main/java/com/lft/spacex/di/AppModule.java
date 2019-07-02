@@ -38,6 +38,7 @@ public class AppModule {
     Storage provideStorage() {
         final SpaceXDatabase database = Room.databaseBuilder(mApp, SpaceXDatabase.class, "spacex_database")
                 .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
                 .build();
 
         return new Storage(database.getDao());
