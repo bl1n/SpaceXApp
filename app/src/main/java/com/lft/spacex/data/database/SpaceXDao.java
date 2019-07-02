@@ -21,5 +21,4 @@ public interface SpaceXDao {
     @Query("select *from launchimage where flight_number = :flightNumber")
     List<LaunchImage> getLaunchImagesByFlightNumber(int flightNumber);
 
-
 }

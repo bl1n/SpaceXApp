@@ -25,6 +25,8 @@ public class ImagesPresenter extends BasePresenter {
     }
 
     public void getImages() {
+
+
         List<LaunchImage> images = mStorage.getLaunchImages();
         mView.showImages(images);
     }
