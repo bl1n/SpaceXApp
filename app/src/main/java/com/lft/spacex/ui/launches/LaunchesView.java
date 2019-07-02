@@ -3,7 +3,7 @@ package com.lft.spacex.ui.launches;
 import android.support.annotation.NonNull;
 
 import com.lft.spacex.common.BaseView;
-import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.data.model.launches.Launch;
 
 import java.util.List;
 

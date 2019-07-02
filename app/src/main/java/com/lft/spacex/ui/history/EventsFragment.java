@@ -17,7 +17,7 @@ import com.lft.spacex.R;
 import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
-import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.data.model.histories.HistoryEvent;
 import com.lft.spacex.ui.history.event.EventActivity;
 import com.lft.spacex.ui.history.event.EventFragment;
 

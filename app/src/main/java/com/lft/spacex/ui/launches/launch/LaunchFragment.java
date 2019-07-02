@@ -17,7 +17,7 @@ import com.lft.spacex.R;
 import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
-import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.data.model.launches.Launch;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -115,13 +115,16 @@ public class LaunchFragment extends PresenterFragment<LaunchPresenter>
         mLFlightDetails.setText(launch.getDetails());
         final List<String> flickrImages = launch.getLinks().getFlickrImages();
         // TODO: 28.06.2019 add RecycleView or ListView for scrolling images
-        for(String s:flickrImages){
+
+
+        /*if(flickrImages.size()>1){
+            Log.d("Debug", "showLaunch: " + launch.getLinks().getFlickrImages().size());
             ImageView imageView = new ImageView(mLFlightDetails.getContext());
             imageView.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             mLinearLayout.addView(imageView);
-            Picasso.get().load(s).into(imageView);
-        }
+            Picasso.get().load(flickrImages.get(0)).into(imageView);
+        }*/
 
     }
 }

@@ -2,8 +2,8 @@ package com.lft.spacex.di;
 
 import com.google.gson.Gson;
 import com.lft.spacex.BuildConfig;
-import com.lft.spacex.data.ApiKeyInterceptor;
-import com.lft.spacex.data.SpaceXApi;
+import com.lft.spacex.data.api.ApiKeyInterceptor;
+import com.lft.spacex.data.api.SpaceXApi;
 
 import javax.inject.Singleton;
 

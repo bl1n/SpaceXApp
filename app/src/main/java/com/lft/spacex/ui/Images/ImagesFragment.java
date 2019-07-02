@@ -1,52 +1,51 @@
-package com.lft.spacex.ui.launches;
+package com.lft.spacex.ui.Images;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.lft.spacex.AppDelegate;
 import com.lft.spacex.R;
 import com.lft.spacex.common.PresenterFragment;
 import com.lft.spacex.common.RefreshOwner;
 import com.lft.spacex.common.Refreshable;
-import com.lft.spacex.data.model.launches.Launch;
-import com.lft.spacex.ui.launches.launch.LaunchActivity;
-import com.lft.spacex.ui.launches.launch.LaunchFragment;
+import com.lft.spacex.data.model.LaunchImage;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
-        implements Refreshable, LaunchesView, LaunchesAdapter.OnItemClickListener {
+public class ImagesFragment extends PresenterFragment<ImagesPresenter> implements ImagesView, Refreshable {
+
+
+    private static final String TAG = "Debug";
 
     private RecyclerView mRecyclerView;
     private RefreshOwner mRefreshOwner;
     private View mErrorView;
-    private LaunchesAdapter mAdapter;
+    private ImageView mImageView;
+    private ImagesAdapter mAdapter;
+
     @Inject
-    LaunchesPresenter mPresenter;
+    ImagesPresenter mPresenter;
 
-    @Override
-    protected LaunchesPresenter getPresenter() {
-        return mPresenter;
-    }
-
-    public static LaunchesFragment newInstance() {
-
+    public static ImagesFragment newInstance() {
         Bundle args = new Bundle();
-
-        LaunchesFragment fragment = new LaunchesFragment();
+        ImagesFragment fragment = new ImagesFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public ImagesPresenter getPresenter() {
+        return mPresenter;
     }
 
     @Override
@@ -73,21 +72,27 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
-            getActivity().setTitle("Launches");
+            getActivity().setTitle("Images");
         }
         AppDelegate.getAppComponent().inject(this);
         mPresenter.setView(this);
-        mAdapter = new LaunchesAdapter(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new ImagesAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         onRefreshData();
     }
 
     @Override
     public void onRefreshData() {
-        mPresenter.getLaunches();
+        mPresenter.getImages();
     }
 
+    @Override
+    public void showImages(List<LaunchImage> images) {
+        mErrorView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mAdapter.addData(images,true);
+    }
     @Override
     public void showRefresh() {
         mRefreshOwner.setRefreshState(true);
@@ -101,30 +106,5 @@ public class LaunchesFragment extends PresenterFragment<LaunchesPresenter>
     @Override
     public void showError() {
         mErrorView.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.GONE);
     }
-
-    @Override
-    public void showLaunches(@NonNull List<Launch> launches) {
-        mErrorView.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-        mAdapter.addData(launches, true);
-    }
-
-    @Override
-    public void openLaunch(@NonNull int id) {
-        Log.d("Debug", "openLaunch: id = " + id);
-        Intent intent = new Intent(getActivity(), LaunchActivity.class);
-        Bundle args = new Bundle();
-        args.putInt(LaunchFragment.FLIGHT_NUMBER, id);
-        intent.putExtra(LaunchFragment.ARGS, args);
-        startActivity(intent);
-
-    }
-
-    @Override
-    public void onItemClick(int id) {
-        mPresenter.openLaunch(id);
-    }
-
 }

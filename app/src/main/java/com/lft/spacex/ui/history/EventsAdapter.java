@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lft.spacex.R;
-import com.lft.spacex.model.histories.HistoryEvent;
+import com.lft.spacex.data.model.histories.HistoryEvent;
 
 import java.util.ArrayList;
 import java.util.List;

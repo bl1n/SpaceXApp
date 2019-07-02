@@ -1,7 +1,7 @@
-package com.lft.spacex.data;
-import com.lft.spacex.model.CompanyInfo;
-import com.lft.spacex.model.histories.HistoryEvent;
-import com.lft.spacex.model.launches.Launch;
+package com.lft.spacex.data.api;
+import com.lft.spacex.data.model.CompanyInfo;
+import com.lft.spacex.data.model.histories.HistoryEvent;
+import com.lft.spacex.data.model.launches.Launch;
 import java.util.List;
 
 import io.reactivex.Single;

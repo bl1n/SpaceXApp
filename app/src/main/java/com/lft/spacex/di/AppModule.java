@@ -1,9 +1,12 @@
 package com.lft.spacex.di;
 
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.lft.spacex.AppDelegate;
+import com.lft.spacex.data.Storage;
+import com.lft.spacex.data.database.SpaceXDatabase;
 
 import javax.inject.Singleton;
 
@@ -30,13 +33,14 @@ public class AppModule {
         return mApp;
     }
 
-//    @Provides
-//    @Singleton
-//    Storage provideStorage() {
-//        final BehanceDatabase database = Room.databaseBuilder(mApp, BehanceDatabase.class, "behance_database")
-//                .fallbackToDestructiveMigration()
-//                .build();
-//
-//        return new Storage(database.getBehanceDao());
-//    }
+    @Provides
+    @Singleton
+    Storage provideStorage() {
+        final SpaceXDatabase database = Room.databaseBuilder(mApp, SpaceXDatabase.class, "spacex_database")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
+
+        return new Storage(database.getDao());
+    }
 }

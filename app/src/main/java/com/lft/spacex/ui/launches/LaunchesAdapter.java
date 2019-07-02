@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lft.spacex.R;
-import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.data.model.launches.Launch;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,8 +3,8 @@ package com.lft.spacex.ui.launches.launch;
 import android.util.Log;
 
 import com.lft.spacex.common.BasePresenter;
-import com.lft.spacex.data.SpaceXApi;
-import com.lft.spacex.model.launches.Launch;
+import com.lft.spacex.data.api.SpaceXApi;
+import com.lft.spacex.data.model.launches.Launch;
 
 import javax.inject.Inject;
 
@@ -14,15 +14,15 @@ import io.reactivex.schedulers.Schedulers;
 public class LaunchPresenter extends BasePresenter {
 
     public static final String TAG = "Debug";
+    private LaunchView mView;
 
     @Inject
     SpaceXApi mApi;
 
+
     @Inject
     public LaunchPresenter() {
     }
-
-    private LaunchView mView;
 
 
 

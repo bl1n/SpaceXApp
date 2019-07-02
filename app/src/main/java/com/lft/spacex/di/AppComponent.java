@@ -1,5 +1,7 @@
 package com.lft.spacex.di;
 
+import com.lft.spacex.ui.Images.ImagesFragment;
+import com.lft.spacex.ui.Images.ImagesPresenter;
 import com.lft.spacex.ui.companyInfo.CompanyInfoFragment;
 import com.lft.spacex.ui.companyInfo.CompanyInfoPresenter;
 import com.lft.spacex.ui.history.EventsFragment;
@@ -37,5 +39,8 @@ public interface AppComponent {
 
     void inject(LaunchPresenter injector);
 
+    void inject(ImagesFragment injector);
+
+    void inject(ImagesPresenter injector);
 
 }
